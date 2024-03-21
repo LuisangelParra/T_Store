@@ -4,6 +4,7 @@ import 'package:t_store/common/widgets/custom_shapes/containers/search_container
 import 'package:t_store/common/widgets/texts/section_heading.dart';
 import 'package:t_store/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:t_store/features/shop/screens/home/widgets/home_categories.dart';
+import 'package:t_store/utils/constants/image_strings.dart';
 
 import '../../../../utils/constants/sizes.dart';
 
@@ -12,11 +13,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            TPrimaryHeaderContainer(
+            const TPrimaryHeaderContainer(
               child: Column(
                 children: [
                   /// -- AppBar --
@@ -48,6 +49,16 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
+            ///Body
+            Padding(
+              padding: const EdgeInsets.all(TSizes.defaultSpace),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(TSizes.md)
+                ),
+                child: const Image(image: AssetImage(TImages.promoBanner1)),
+              ),
+            )
           ],
         ),
       ),
