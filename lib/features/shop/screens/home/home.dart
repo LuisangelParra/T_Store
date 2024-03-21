@@ -56,7 +56,7 @@ class HomeScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(TSizes.md)
                 ),
-                child: const Image(image: AssetImage(TImages.promoBanner1)),
+                child: const Image(image: AssetImage(TImages.banner1)),
               ),
             )
           ],
