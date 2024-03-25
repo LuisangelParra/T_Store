@@ -4,6 +4,7 @@ import 'package:t_store/common/widgets/custom_shapes/containers/search_container
 import 'package:t_store/common/widgets/texts/section_heading.dart';
 import 'package:t_store/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:t_store/features/shop/screens/home/widgets/home_categories.dart';
+import 'package:t_store/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:t_store/utils/constants/image_strings.dart';
 
 import '../../../../utils/constants/sizes.dart';
@@ -13,11 +14,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const TPrimaryHeaderContainer(
+            TPrimaryHeaderContainer(
               child: Column(
                 children: [
                   /// -- AppBar --
@@ -49,20 +50,23 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
+
             ///Body
             Padding(
-              padding: const EdgeInsets.all(TSizes.defaultSpace),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(TSizes.md)
-                ),
-                child: const Image(image: AssetImage(TImages.banner1)),
+              padding: EdgeInsets.all(TSizes.defaultSpace),
+              child: Column(
+                children: [
+                  /// -- Promo Slider --
+                  TPromoSlider(banners: [TImages.promoBanner1,TImages.promoBanner2,TImages.promoBanner3],),
+                
+                  /// --Populars Products --
+                  
+                ],
               ),
-            )
+            ),
           ],
         ),
       ),
     );
   }
 }
-
