@@ -119,8 +119,8 @@ class TProductCardVertical extends StatelessWidget {
                     ),
                   ),
                   child: const SizedBox(
-                    width: TSizes.iconLg * 0.9,
-                    height: TSizes.iconLg * 0.9,
+                    width: TSizes.iconLg,
+                    height: TSizes.iconLg,
                     child: Center(
                       child: Icon(
                         Iconsax.add,

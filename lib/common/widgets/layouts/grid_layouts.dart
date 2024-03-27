@@ -6,7 +6,7 @@ class TGridLayaout extends StatelessWidget {
   const TGridLayaout({
     super.key,
     required this.itemCount,
-    this.mainAxisExtent = 288,
+    this.mainAxisExtent = 292,
     required this.itemBuilder,
   });
 
