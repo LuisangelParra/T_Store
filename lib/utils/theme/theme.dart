@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:t_store/utils/theme/custom_themes/text_theme.dart';
 
+import '../constants/colors.dart';
 import 'custom_themes/appbar_theme.dart';
 import 'custom_themes/bottom_sheet_theme.dart';
 import 'custom_themes/checkbox_theme.dart';
@@ -34,7 +35,7 @@ class TAppTheme {
     primaryColor: Colors.blue,
     textTheme: TTexTheme.darkTextTheme,
     chipTheme: TChipTheme.darkChipTheme,
-    scaffoldBackgroundColor: Colors.black,
+    scaffoldBackgroundColor: TColors.dark,
     appBarTheme: TAppBarTheme.darkAppBarTheme,
     checkboxTheme: TCheckBoxTheme.darkCheckBoxTheme,
     bottomSheetTheme: TBottomSheetTheme.darkBottomSheetTheme,
