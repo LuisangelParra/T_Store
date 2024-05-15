@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:t_store/features/shop/screens/product_details/widgets/product_detail_image_slider.dart';
+import 'package:t_store/features/shop/screens/product_details/widgets/product_meta_data.dart';
+import 'package:t_store/features/shop/screens/product_details/widgets/rating_share_widget.dart';
 
 import '../../../../utils/constants/sizes.dart';
 
@@ -9,61 +10,27 @@ class ProductDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
             /// 1- Product Image Slider
-            const TProductImageSlider(),
+            TProductImageSlider(),
 
             /// 2- Product Details
             Padding(
-              padding: const EdgeInsets.only(
+              padding: EdgeInsets.only(
                   right: TSizes.defaultSpace,
                   left: TSizes.defaultSpace,
                   bottom: TSizes.defaultSpace),
               child: Column(
                 children: [
                   /// - Rating & Share
-                  Row(
-                    children: [
-                      /// Rating
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Icon(
-                            Iconsax.star5,
-                            color: Colors.amber,
-                            size: 24,
-                          ),
-                          const SizedBox(
-                            width: TSizes.spaceBtwItems / 2,
-                          ),
-                          Text.rich(
-                            TextSpan(
-                              children: [
-                                TextSpan(
-                                    text: '5.0',
-                                    style:
-                                        Theme.of(context).textTheme.bodyLarge),
-                                const TextSpan(text: '(199)'),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-
-                      /// Share Button
-                      IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.share,
-                            size: TSizes.iconMd,
-                          )),
-                    ],
-                  )
+                  TRatingAndShare(),
 
                   /// - Price, Title, Stock, & Brand
+                  TProductMetaData(),
+
                   /// -- Attributes
                   /// -- Checkout Button
                   /// - Description
