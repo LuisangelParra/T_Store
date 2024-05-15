@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:t_store/features/shop/screens/product_details/widgets/product_attributes.dart';
 import 'package:t_store/features/shop/screens/product_details/widgets/product_detail_image_slider.dart';
 import 'package:t_store/features/shop/screens/product_details/widgets/product_meta_data.dart';
 import 'package:t_store/features/shop/screens/product_details/widgets/rating_share_widget.dart';
@@ -32,6 +33,8 @@ class ProductDetailScreen extends StatelessWidget {
                   TProductMetaData(),
 
                   /// -- Attributes
+                  TProductAttributes()
+                  
                   /// -- Checkout Button
                   /// - Description
                   /// - Reviews
