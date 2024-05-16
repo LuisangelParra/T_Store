@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:t_store/common/widgets/chips/choice_chip.dart';
 import 'package:t_store/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:t_store/common/widgets/texts/product_price_text.dart';
 import 'package:t_store/common/widgets/texts/product_title_text.dart';
@@ -77,7 +79,63 @@ class TProductAttributes extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: TSizes.spaceBtwItems,)
+        const SizedBox(height: TSizes.spaceBtwItems),
+
+        /// -- Attributes
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const TSectionHeading(title: 'Colors'),
+            const SizedBox(height: TSizes.spaceBtwItems / 2),
+            Wrap(
+              spacing: 8,
+              children: [
+                TChoiceChip(
+                  text: 'Green',
+                  selected: true,
+                  onSelected: (value) {},
+                ),
+                TChoiceChip(
+                  text: 'Blue',
+                  selected: false,
+                  onSelected: (value) {},
+                ),
+                TChoiceChip(
+                  text: 'Yellow',
+                  selected: false,
+                  onSelected: (value) {},
+                ),
+              ],
+            ),
+          ],
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const TSectionHeading(title: 'Size'),
+            const SizedBox(height: TSizes.spaceBtwItems / 2),
+            Wrap(
+              spacing: 8,
+              children: [
+                TChoiceChip(
+                  text: 'EU 34',
+                  selected: true,
+                  onSelected: (value) {},
+                ),
+                TChoiceChip(
+                  text: 'EU 36',
+                  selected: false,
+                  onSelected: (value) {},
+                ),
+                TChoiceChip(
+                  text: 'EU 38',
+                  selected: false,
+                  onSelected: (value) {},
+                ),
+              ],
+            ),
+          ],
+        ),
       ],
     );
   }
