@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:t_store/common/widgets/appbar/appbar.dart';
-import 'package:t_store/common/widgets/products/cart/add_remove_button.dart';
 import 'package:t_store/common/widgets/products/cart/cart_item.dart';
-import 'package:t_store/common/widgets/texts/product_price_text.dart';
+import 'package:t_store/features/shop/screens/checkout/checkout.dart';
 import '../../../../utils/constants/sizes.dart';
 
 class CartScreen extends StatelessWidget {
@@ -18,41 +18,16 @@ class CartScreen extends StatelessWidget {
           style: Theme.of(context).textTheme.headlineSmall,
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(TSizes.defaultSpace),
-        child: ListView.separated(
-          shrinkWrap: true,
-          itemCount: 10,
-          separatorBuilder: (_, __) => const SizedBox(
-            height: TSizes.spaceBtwSections,
-          ),
-          itemBuilder: (_, index) => const Column(
-            children: [
-              TCartItem(),
-              SizedBox(height: TSizes.spaceBtwItems),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      /// Extra Space
-                      SizedBox(width: 70),
+      body: const Padding(
+        padding: EdgeInsets.all(TSizes.defaultSpace),
 
-                      /// Add Remove Buttons
-                      TProductQuantityWithAddRemoveButton(),
-                    ],
-                  ),
-                  TProductPriceText(price: '256')
-                ],
-              ),
-            ],
-          ),
-        ),
+        /// -- Items in Cart
+        child: TCartItem(),
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(TSizes.defaultSpace),
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () => Get.to(() => const CheckoutScreen()),
           child: const Text('Checkout \$256.0'),
         ),
       ),
