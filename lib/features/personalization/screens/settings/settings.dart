@@ -6,6 +6,7 @@ import 'package:t_store/common/widgets/custom_shapes/containers/primary_header_c
 import 'package:t_store/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:t_store/common/widgets/list_tiles/user_profile_tiles.dart';
 import 'package:t_store/common/widgets/texts/section_heading.dart';
+import 'package:t_store/features/personalization/screens/address/address.dart';
 import 'package:t_store/features/personalization/screens/profile/profile.dart';
 
 import '../../../../utils/constants/colors.dart';
@@ -39,7 +40,8 @@ class SettingsScreen extends StatelessWidget {
                   ),
 
                   /// User Profile Card
-                  TUserProfileTile(onPressed: () => Get.to(()=> const ProfileScreen())),
+                  TUserProfileTile(
+                      onPressed: () => Get.to(() => const ProfileScreen())),
                   const SizedBox(
                     height: TSizes.spaceBtwSections,
                   ),
@@ -53,7 +55,10 @@ class SettingsScreen extends StatelessWidget {
               child: Column(
                 children: [
                   ///-- Account Settings
-                  const TSectionHeading(title: 'Account Settings', showActionButton: false,),
+                  const TSectionHeading(
+                    title: 'Account Settings',
+                    showActionButton: false,
+                  ),
                   const SizedBox(
                     height: TSizes.spaceBtwItems,
                   ),
@@ -61,7 +66,7 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.safe_home,
                     title: 'My Addresses',
                     subtitle: 'Set shopping delivery address',
-                    onTap: () {},
+                    onTap: () => Get.to(() => const UserAddressScreen()),
                   ),
                   TSettingsMenuTile(
                     icon: Iconsax.shopping_cart,
@@ -104,7 +109,10 @@ class SettingsScreen extends StatelessWidget {
                   const SizedBox(
                     height: TSizes.spaceBtwSections,
                   ),
-                  const TSectionHeading(title: 'App Settings', showActionButton: false,),
+                  const TSectionHeading(
+                    title: 'App Settings',
+                    showActionButton: false,
+                  ),
                   const SizedBox(
                     height: TSizes.spaceBtwItems,
                   ),
