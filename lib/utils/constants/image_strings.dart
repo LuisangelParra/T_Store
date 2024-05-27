@@ -74,7 +74,7 @@ class TImages {
       "assets/images/animations/sammy-line-travel-backpack-with-passport-and-air-ticket.gif";
 
   // -- Lottie Animations
-  static String defaultLoaderAnimation =
+  static const String defaultLoaderAnimation =
       "assets/images/animations/default-loader-animation.json";
   static String cartAnimation =
       "assets/images/animations/lady-adding-product-in-cart-animation.json";
@@ -96,7 +96,7 @@ class TImages {
       "assets/images/animations/72785-searching.json";
   static String securityAnimation =
       "assets/images/animations/67263-security-icon-transparent.json";
-  static String successfullyRegisterAnimation =
+  static const String successfullyRegisterAnimation =
       "assets/images/animations/72462-check-register.json";
   static String thankYouAnimation =
       "assets/images/animations/104368-thank-you.json";
