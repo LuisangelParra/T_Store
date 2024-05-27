@@ -1,13 +1,12 @@
-
-
 import 'package:intl/intl.dart';
 
-class TFormatters {
+class TFormatter {
   static String formatDate(DateTime? date) {
     date ??= DateTime.now();
-    return DateFormat('dd-MMM-yyyy').format(date); // Customize the date format as needed
+    return DateFormat('dd-MMM-yyyy')
+        .format(date); // Customize the date format as needed
   }
-  
+
   static String formatCurrency(double amount) {
     return NumberFormat.currency(locale: 'en_US', symbol: '\$').format(amount);
   }
@@ -28,7 +27,7 @@ class TFormatters {
     var digitsOnly = phoneNumber.replaceAll(RegExp(r'\D'), '');
 
     // Extract the country code from the digitsOnly
-    String countryCode ='+${digitsOnly.substring(0, 2)}';
+    String countryCode = '+${digitsOnly.substring(0, 2)}';
     digitsOnly = digitsOnly.substring(2);
 
     // Add the remaining digits with proper formatting
@@ -38,7 +37,7 @@ class TFormatters {
     int i = 0;
     while (i < digitsOnly.length) {
       int groupLenght = 2;
-      if (i  == 0 && countryCode == '+1') { 
+      if (i == 0 && countryCode == '+1') {
         groupLenght = 3;
       }
 

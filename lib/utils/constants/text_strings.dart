@@ -1,25 +1,35 @@
-//* This class contains all the App Text in String formats.
-
+/// This class contains all the App Text in String formats.
 class TTexts {
+  // -- Admin Default Credentials
+  static const String adminEmail = "support@codingwitht.com";
+  static const String adminPassword = "Admin@123";
+
+  // -- Storage Paths
+  static const String bannersStoragePath = "/Banners";
+  static const String brandsStoragePath = "/Brands";
+  static const String categoriesStoragePath = "/Categories";
+  static const String productsStoragePath = "/Products";
+  static const String usersStoragePath = "/Users";
+
   // -- GLOBAL Texts
   static const String and = "and";
   static const String skip = "Skip";
   static const String done = "Done";
   static const String submit = "Submit";
-  static const String appName = "T-Store";
+  static const String appName = "T Store";
   static const String tContinue = "Continue";
 
   // -- OnBoarding Texts
-  static const String onBoardingTitle1 = 'Choose your product';
-  static const String onBoardingTitle2 = 'Select payment method';
-  static const String onBoardingTitle3 = 'Deliver to your door step';
+  static const String onBoardingTitle1 = "Choose your product";
+  static const String onBoardingTitle2 = "Select Payment Method";
+  static const String onBoardingTitle3 = "Deliver at your door step";
 
-  static const String onBoardingSubtitle1 =
-      'Welcome to the World of Limitless Choices - Your Perfect Product Awaits!';
-  static const String onBoardingSubtitle2 =
-      'For Seamless Transactions, Choose Your Preferred Payment Path - Your Convenience, Our Priority!';
-  static const String onBoardingSubtitle3 =
-      'From Out Doorstep to Yours - Swift, Secure and Contactless Delivery!';
+  static const String onBoardingSubTitle1 =
+      "Welcome to a World of Limitless Choices - Your Perfect Product Awaits!";
+  static const String onBoardingSubTitle2 =
+      "For Seamless Transactions, Choose Your Payment Path - Your Convenience, Our Priority!";
+  static const String onBoardingSubTitle3 =
+      "From Our Doorstep to Yours - Swift, Secure, and Contactless Delivery!";
 
   // -- Authentication Forms
   static const String firstName = "First Name";
@@ -68,5 +78,5 @@ class TTexts {
 
   // -- Home
   static const String homeAppbarTitle = "Good day for shopping";
-  static const String homeAppbarSubTitle = "Luisangel Parra";
+  static const String homeAppbarSubTitle = "Taimoor Sikander";
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:t_store/bindings/general_bindings.dart';
 import 'package:t_store/utils/theme/theme.dart';
 
 import 'utils/constants/colors.dart';
@@ -14,7 +15,9 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
-      //Show Loader or Circular Progress Indicator meanwhile Authentication Repository is deciding to show relevant screen.
+      initialBinding: GeneralBindings(),
+
+      /// Show Loader or Circular Progress Indicator meanwhile Authentication Repository is deciding to show relevant screen.
       home: const Scaffold(
         backgroundColor: TColors.primary,
         body: Center(
