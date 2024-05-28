@@ -9,6 +9,7 @@ import 'package:t_store/common/widgets/texts/section_heading.dart';
 import 'package:t_store/data/repositories/authentication/authentication_repository.dart';
 import 'package:t_store/features/personalization/screens/address/address.dart';
 import 'package:t_store/features/personalization/screens/profile/profile.dart';
+import 'package:t_store/features/personalization/screens/settings/widgets/load_data.dart';
 import 'package:t_store/features/shop/screens/order/order.dart';
 
 import '../../../../utils/constants/colors.dart';
@@ -122,7 +123,7 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.document_upload,
                     title: 'Load Data',
                     subtitle: 'Upload Data to your Cloud Firabase',
-                    onTap: () {},
+                    onTap: () => Get.to(() => const UploadData()),
                   ),
                   TSettingsMenuTile(
                     icon: Iconsax.location,
