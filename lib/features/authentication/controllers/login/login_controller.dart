@@ -47,6 +47,7 @@ class LoginController extends GetxController {
         localStorage.write('REMEMBER_ME_PASSWORD', password.text.trim());
       }
 
+      // ignore: unused_local_variable
       final userCredentials = await AuthenticationRepository.instance
           .loginUserWithEmailAndPassword(
               email.text.trim(), password.text.trim());
