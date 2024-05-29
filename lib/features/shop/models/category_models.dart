@@ -39,7 +39,7 @@ class CategoryModel {
       final data = document.data()!;
 
       return CategoryModel(
-        id: document.id,
+        id: data['Id'] ?? '',
         name: data['Name'] ?? '',
         image: data['Image'] ?? '',
         parentId: data['ParentId'] ?? '',

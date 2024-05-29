@@ -46,13 +46,16 @@ class CategoryRepository extends GetxController {
         if (allCategories.any((element) => element.name == category.name)) {
           continue;
         }
-        final file = await storage.getImageDataFromAssers(category.image);
+        final file = await storage.getImageDataFromAssets(category.image);
         final url =
             await storage.uploadImageData('Categories', file, category.name);
 
         category.image = url;
 
-        await _db.collection('Categories').add(category.toJson());
+        await _db
+            .collection('Categories')
+            .doc(category.id)
+            .set(category.toJson());
       }
     } on FirebaseException catch (e) {
       throw TFirebaseException(e.code).message;

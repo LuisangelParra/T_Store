@@ -10,7 +10,7 @@ class TFireBaseStorageService extends GetxController {
 
   final _firebaseStorage = FirebaseStorage.instance;
 
-  Future<Uint8List> getImageDataFromAssers(String path) async {
+  Future<Uint8List> getImageDataFromAssets(String path) async {
     try {
       final byteData = await rootBundle.load(path);
       final imageData = byteData.buffer
