@@ -7,8 +7,8 @@ import 'package:t_store/utils/constants/text_strings.dart';
 
 import '../../../../utils/constants/sizes.dart';
 
-class SingupScreen extends StatelessWidget {
-  const SingupScreen({super.key});
+class SignupScreen extends StatelessWidget {
+  const SignupScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,5 +42,3 @@ class SingupScreen extends StatelessWidget {
     );
   }
 }
-
-

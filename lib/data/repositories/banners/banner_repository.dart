@@ -1,27 +1,26 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:t_store/data/services/cloud_storage/firebase_storage_service.dart';
-import 'package:t_store/features/shop/models/category_model.dart';
+import 'package:t_store/features/shop/models/banner_model.dart';
 import 'package:t_store/utils/constants/dummy_data.dart';
 import 'package:t_store/utils/exceptions/firebase_exceptions.dart';
 import 'package:t_store/utils/exceptions/platform_exceptions.dart';
 
-class CategoryRepository extends GetxController {
-  static CategoryRepository get instance => Get.find();
+class BannerRepository extends GetxController {
+  static BannerRepository get instance => Get.find();
 
-  //Variables
   final _db = FirebaseFirestore.instance;
-  final categoryLoading = false.obs;
-  RxList<CategoryModel> allCategories = CategoryModel.emptyList().obs;
+  final bannersLoading = false.obs;
 
-  //Get All Categories
-  Future<List<CategoryModel>> getAllCategories() async {
+  Future<List<BannerModel>> fetchBanners() async {
     try {
-      final snapshot = await _db.collection('Categories').get();
+      final snapshot = await _db
+          .collection('Banners')
+          .where('Active', isEqualTo: true)
+          .get();
       final list = snapshot.docs
-          .map((document) => CategoryModel.fromSnapshot(document))
+          .map((document) => BannerModel.fromSnapshot(document))
           .toList();
-      allCategories(list);
       return list;
     } on FirebaseException catch (e) {
       throw TFirebaseException(e.code).message;
@@ -32,30 +31,29 @@ class CategoryRepository extends GetxController {
     }
   }
 
-// Upload Categories to the Cloud Firesbase
-
   Future<void> uploadDummyData() async {
     try {
-      categoryLoading.value = true;
-      await getAllCategories();
+      bannersLoading.value = true;
+      await fetchBanners();
 
-      final categories = TDummyData.categories;
+      final banners = TDummyData.banners;
       final storage = Get.put(TFireBaseStorageService());
 
-      for (var category in categories) {
-        if (allCategories.any((element) => element.name == category.name)) {
-          continue;
+      //  Drop old data and upload new data
+      await _db.collection('Banners').get().then((snapshot) {
+        for (DocumentSnapshot ds in snapshot.docs) {
+          ds.reference.delete();
         }
-        final file = await storage.getImageDataFromAssets(category.image);
+      });
+
+      for (var banner in banners) {
+        final file = await storage.getImageDataFromAssets(banner.imageUrl);
         final url =
-            await storage.uploadImageData('Categories', file, category.name);
+            await storage.uploadImageData('Banners', file, banner.bannerName());
 
-        category.image = url;
+        banner.imageUrl = url;
 
-        await _db
-            .collection('Categories')
-            .doc(category.id)
-            .set(category.toJson());
+        await _db.collection('Banners').add(banner.toJson());
       }
     } on FirebaseException catch (e) {
       throw TFirebaseException(e.code).message;
@@ -64,7 +62,7 @@ class CategoryRepository extends GetxController {
     } catch (e) {
       throw 'Something went wrong. Please try again.';
     } finally {
-      categoryLoading.value = false;
+      bannersLoading.value = false;
     }
   }
 }

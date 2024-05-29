@@ -3,6 +3,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:t_store/common/widgets/appbar/appbar.dart';
 import 'package:t_store/common/widgets/list_tiles/upload_data_tile.dart';
 import 'package:t_store/common/widgets/texts/section_heading.dart';
+import 'package:t_store/features/shop/controllers/banner_controller.dart';
 import 'package:t_store/features/shop/controllers/category_controller.dart';
 
 import '../../../../../utils/constants/sizes.dart';
@@ -13,6 +14,7 @@ class UploadData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final categoryController = CategoryController.instance;
+    final bannersController = BannerController.instance;
 
     return Scaffold(
       appBar: const TAppBar(
@@ -45,10 +47,11 @@ class UploadData extends StatelessWidget {
               icon2: Iconsax.arrow_up_1,
             ),
             const SizedBox(height: TSizes.spaceBtwItems),
-            const TUploadDataMenuTile(
+            TUploadDataMenuTile(
               title: 'Upload Banners',
               icon: Iconsax.image,
               icon2: Iconsax.arrow_up_1,
+              onTap: () => bannersController.uploadDummyData(),
             ),
             const SizedBox(height: TSizes.spaceBtwSections),
             const TSectionHeading(

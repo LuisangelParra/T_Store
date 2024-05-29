@@ -1,8 +1,64 @@
-import 'package:t_store/features/shop/models/category_models.dart';
+import 'package:t_store/features/shop/models/banner_model.dart';
+import 'package:t_store/features/shop/models/category_model.dart';
 
 import 'image_strings.dart';
+import '../../routes/routes.dart';
 
 class TDummyData {
+  /// -- List of all banners
+  static final List<BannerModel> banners = [
+    BannerModel(
+      imageUrl: TImages.promoBanner1,
+      targetScreen: TRoutes.order,
+      active: true,
+    ),
+    BannerModel(
+      imageUrl: TImages.promoBanner2,
+      targetScreen: TRoutes.favourites,
+      active: true,
+    ),
+    BannerModel(
+      imageUrl: TImages.promoBanner3,
+      targetScreen: TRoutes.cart,
+      active: true,
+    ),
+    BannerModel(
+      imageUrl: TImages.banner1,
+      targetScreen: TRoutes.order,
+      active: false,
+    ),
+    BannerModel(
+      imageUrl: TImages.banner2,
+      targetScreen: TRoutes.order,
+      active: false,
+    ),
+    BannerModel(
+      imageUrl: TImages.banner3,
+      targetScreen: TRoutes.order,
+      active: false,
+    ),
+    BannerModel(
+      imageUrl: TImages.banner4,
+      targetScreen: TRoutes.order,
+      active: false,
+    ),
+    BannerModel(
+      imageUrl: TImages.banner5,
+      targetScreen: TRoutes.order,
+      active: false,
+    ),
+    BannerModel(
+      imageUrl: TImages.banner6,
+      targetScreen: TRoutes.order,
+      active: false,
+    ),
+    BannerModel(
+      imageUrl: TImages.banner8,
+      targetScreen: TRoutes.order,
+      active: false,
+    ),
+  ];
+
   /// -- List of all categories
   static final List<CategoryModel> categories = [
     CategoryModel(

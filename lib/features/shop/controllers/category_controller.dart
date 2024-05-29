@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:t_store/data/repositories/categories/category_repository.dart';
-import 'package:t_store/features/shop/models/category_models.dart';
+import 'package:t_store/features/shop/models/category_model.dart';
 import 'package:t_store/utils/popups/full_screen_loader.dart';
 import 'package:t_store/utils/popups/loaders.dart';
 
