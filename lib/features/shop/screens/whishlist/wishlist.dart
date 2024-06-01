@@ -5,6 +5,7 @@ import 'package:t_store/common/widgets/appbar/appbar.dart';
 import 'package:t_store/common/widgets/icons/t_circular_icon.dart';
 import 'package:t_store/common/widgets/layouts/grid_layouts.dart';
 import 'package:t_store/common/widgets/products/product_cards/product_card_vertical.dart';
+import 'package:t_store/features/shop/models/product_model.dart';
 import 'package:t_store/features/shop/screens/home/home.dart';
 
 class FavouriteScreen extends StatelessWidget {
@@ -32,7 +33,9 @@ class FavouriteScreen extends StatelessWidget {
             children: [
               TGridLayaout(
                 itemCount: 6,
-                itemBuilder: (_, index) => const TProductCardVertical(),
+                itemBuilder: (_, index) => TProductCardVertical(
+                  product: ProductModel.empty(),
+                ),
               ),
             ],
           ),
