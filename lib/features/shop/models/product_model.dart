@@ -110,7 +110,7 @@ class ProductModel {
     return ProductModel(
       id: document.id,
       sku: data['SKU'] ?? '',
-      title: data['Title'],
+      title: data['Title'] ?? '',
       stock: data['Stock'] ?? 0,
       isFeatured: data['IsFeatured'] ?? false,
       price: double.parse((data['Price'] ?? 0.0).toString()),
