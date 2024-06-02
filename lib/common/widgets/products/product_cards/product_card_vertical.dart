@@ -39,7 +39,7 @@ class TProductCardVertical extends StatelessWidget {
         ),
       ),
       child: Container(
-        width: 190,
+        width: 180,
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
           boxShadow: [TShadowStyles.verticalProductShadow],
@@ -60,6 +60,7 @@ class TProductCardVertical extends StatelessWidget {
                     imageUrl: product.thumbnail,
                     applyImageRadius: true,
                     isNetworkImage: true,
+                    width: double.infinity,
                   ),
 
                   /// -- Sale Tag
@@ -92,28 +93,31 @@ class TProductCardVertical extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: TSizes.spaceBtwSections / 2),
+            const SizedBox(height: TSizes.spaceBtwItems),
 
             /// -- Details
-            Padding(
-              padding: const EdgeInsets.only(
-                top: TSizes.sm,
-                left: TSizes.sm,
-                right: TSizes.sm,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  /// -- Product Name
-                  TProductTitleText(
-                    title: product.title,
-                    smallSize: true,
-                  ),
-                  const SizedBox(height: TSizes.spaceBtwItems / 2),
-                  TBrandTitleWithVerifiedIcon(
-                    title: product.brand!.name,
-                  ),
-                ],
+            SizedBox(
+              width: double.infinity,
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  right: TSizes.sm,
+                  left: TSizes.sm,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    /// -- Product Name
+                    TProductTitleText(
+                      title: product.title,
+                      smallSize: true,
+                    ),
+                    const SizedBox(height: TSizes.spaceBtwItems / 2),
+                    TBrandTitleWithVerifiedIcon(
+                      title: product.brand!.name,
+                      textAlign: TextAlign.start,
+                    ),
+                  ],
+                ),
               ),
             ),
 
@@ -121,6 +125,7 @@ class TProductCardVertical extends StatelessWidget {
 
             /// Price Row
             Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 /// Price
@@ -131,7 +136,7 @@ class TProductCardVertical extends StatelessWidget {
                               ProductType.single.toString() &&
                           product.salePrice > 0)
                         Padding(
-                          padding: const EdgeInsets.only(left: TSizes.sm),
+                          padding: const EdgeInsets.only(left: 0),
                           child: Text(
                             product.price.toString(),
                             overflow: TextOverflow.ellipsis,
@@ -139,6 +144,7 @@ class TProductCardVertical extends StatelessWidget {
                                 .textTheme
                                 .labelMedium!
                                 .apply(decoration: TextDecoration.lineThrough),
+                            textAlign: TextAlign.left,
                           ),
                         ),
                       Padding(

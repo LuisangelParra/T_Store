@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class TProductTitleText extends StatelessWidget {
   const TProductTitleText({
     super.key,
