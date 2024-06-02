@@ -5,7 +5,7 @@ import 'package:t_store/common/widgets/list_tiles/upload_data_tile.dart';
 import 'package:t_store/common/widgets/texts/section_heading.dart';
 import 'package:t_store/features/shop/controllers/banner_controller.dart';
 import 'package:t_store/features/shop/controllers/category_controller.dart';
-import 'package:t_store/features/shop/controllers/product_controller.dart';
+import 'package:t_store/features/shop/controllers/product/product_controller.dart';
 
 import '../../../../../utils/constants/sizes.dart';
 

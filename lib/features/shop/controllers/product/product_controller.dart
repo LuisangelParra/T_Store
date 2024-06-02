@@ -6,7 +6,7 @@ import 'package:t_store/utils/constants/enums.dart';
 import 'package:t_store/utils/popups/full_screen_loader.dart';
 import 'package:t_store/utils/popups/loaders.dart';
 
-import '../../../utils/constants/image_strings.dart';
+import '../../../../utils/constants/image_strings.dart';
 
 class ProductController extends GetxController {
   static ProductController get instance => Get.find();
