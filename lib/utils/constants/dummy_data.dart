@@ -187,18 +187,35 @@ class TDummyData {
         productsCount: 16,
         isFeatured: true),
     BrandModel(
-        id: '10', image: TImages.acerlogo, name: 'Acer', isFeatured: false),
+        id: '10',
+        image: TImages.acerlogo,
+        name: 'Acer',
+        isFeatured: false,
+        productsCount: 36),
     BrandModel(
-        id: '3', image: TImages.jordanLogo, name: 'Jordan', isFeatured: true),
+        id: '3',
+        image: TImages.jordanLogo,
+        name: 'Jordan',
+        isFeatured: true,
+        productsCount: 35),
     BrandModel(
-        id: '4', image: TImages.pumaLogo, name: 'Puma', isFeatured: true),
+        id: '4',
+        image: TImages.pumaLogo,
+        name: 'Puma',
+        isFeatured: true,
+        productsCount: 35),
     BrandModel(
-        id: '6', image: TImages.zaraLogo, name: 'ZARA', isFeatured: true),
+        id: '6',
+        image: TImages.zaraLogo,
+        name: 'ZARA',
+        isFeatured: true,
+        productsCount: 35),
     BrandModel(
         id: '7',
         image: TImages.electronicsIcon,
         name: 'Samsung',
-        isFeatured: true),
+        isFeatured: false,
+        productsCount: 35),
   ];
 
   static final List<BrandCategoryModel> brandCategory = [

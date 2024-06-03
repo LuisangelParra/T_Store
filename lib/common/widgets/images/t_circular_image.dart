@@ -6,8 +6,8 @@ import 'package:t_store/utils/helpers/helper_functions.dart';
 
 import '../../../utils/constants/colors.dart';
 
-class TCIrcularImage extends StatelessWidget {
-  const TCIrcularImage({
+class TCircularImage extends StatelessWidget {
+  const TCircularImage({
     super.key,
     this.fit = BoxFit.cover,
     required this.image,

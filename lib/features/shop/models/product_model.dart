@@ -47,6 +47,9 @@ class ProductModel {
         price: 0,
         thumbnail: '',
         productType: '',
+        brand: BrandModel.empty(),
+        productVariations: [],
+        productAttributes: [],
       );
 
   toJson() {

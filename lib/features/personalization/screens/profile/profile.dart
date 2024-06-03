@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:t_store/common/widgets/appbar/appbar.dart';
 import 'package:t_store/common/widgets/shimmers/shimmer.dart';
@@ -45,7 +44,7 @@ class ProfileScreen extends StatelessWidget {
                               width: 80,
                               radius: 80,
                             )
-                          : TCIrcularImage(
+                          : TCircularImage(
                               image: image,
                               width: 80,
                               height: 80,

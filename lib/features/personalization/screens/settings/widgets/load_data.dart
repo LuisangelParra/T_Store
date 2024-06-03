@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:t_store/common/widgets/appbar/appbar.dart';
 import 'package:t_store/common/widgets/list_tiles/upload_data_tile.dart';
 import 'package:t_store/common/widgets/texts/section_heading.dart';
 import 'package:t_store/features/shop/controllers/banner_controller.dart';
+import 'package:t_store/features/shop/controllers/brand_controller.dart';
 import 'package:t_store/features/shop/controllers/category_controller.dart';
 import 'package:t_store/features/shop/controllers/product/product_controller.dart';
 
@@ -16,7 +18,8 @@ class UploadData extends StatelessWidget {
   Widget build(BuildContext context) {
     final categoryController = CategoryController.instance;
     final bannersController = BannerController.instance;
-    final productsController = ProductController.instance;
+    final productsController = Get.put(ProductController());
+    final brandController = Get.put(BrandController());
 
     return Scaffold(
       appBar: const TAppBar(
@@ -37,10 +40,11 @@ class UploadData extends StatelessWidget {
               onTap: () => categoryController.uploadDummyData(),
             ),
             const SizedBox(height: TSizes.spaceBtwItems),
-            const TUploadDataMenuTile(
+            TUploadDataMenuTile(
               title: 'Upload Brands',
               icon: Iconsax.shop,
               icon2: Iconsax.arrow_up_1,
+              onTap: () => brandController.uploadDummyData(),
             ),
             const SizedBox(height: TSizes.spaceBtwItems),
             TUploadDataMenuTile(

@@ -81,7 +81,7 @@ class TProductMetaData extends StatelessWidget {
         /// Brand
         Row(
           children: [
-            TCIrcularImage(
+            TCircularImage(
               image: product.brand != null ? product.brand!.image : '',
               width: 32,
               height: 32,

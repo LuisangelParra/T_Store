@@ -17,6 +17,9 @@ class BrandModel {
 
   static BrandModel empty() => BrandModel(id: '', name: '', image: '');
 
+  brandName() => image.split('/').last;
+  static List<BrandModel> emptyList() => [];
+
   Map<String, dynamic> toJson() {
     return {
       'Id': id,
@@ -52,7 +55,7 @@ class BrandModel {
         id: document.id,
         name: data['Name'] ?? '',
         image: data['Image'] ?? '',
-        productsCount: data['ProductsCount'] ?? 0,
+        productsCount: data['ProductsCount'] ?? '',
         isFeatured: data['IsFeatured'] ?? false,
       );
     } else {

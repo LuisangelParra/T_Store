@@ -33,7 +33,7 @@ class TVerticalImageText extends StatelessWidget {
         child: Column(
           children: [
             /// Circular Icon
-            TCIrcularImage(
+            TCircularImage(
               image: image,
               fit: BoxFit.fitWidth,
               padding: TSizes.sm * 1.4,

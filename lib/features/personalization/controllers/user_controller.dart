@@ -27,6 +27,7 @@ class UserController extends GetxController {
   final userRepository = Get.put(UserRepository());
   GlobalKey<FormState> reAuthFormKey = GlobalKey<FormState>();
 
+  @override
   void onInit() {
     super.onInit();
     fetchUserRecord();
