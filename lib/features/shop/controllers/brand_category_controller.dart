@@ -27,10 +27,7 @@ class BrandCategoryController extends GetxController {
       final relations = TDummyData.brandCategory;
 
       for (var relation in relations) {
-        await _db
-            .collection('BrandCategory')
-            .doc(relation.brandId)
-            .set(relation.toJson());
+        await _db.collection('BrandCategory').add(relation.toJson());
       }
 
       TFullScreenLoader.stopLoading();

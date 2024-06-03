@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:t_store/data/repositories/categories/category_repository.dart';
+import 'package:t_store/data/repositories/products/product_repository.dart';
 import 'package:t_store/features/shop/models/category_model.dart';
+import 'package:t_store/features/shop/models/product_model.dart';
 import 'package:t_store/utils/popups/full_screen_loader.dart';
 import 'package:t_store/utils/popups/loaders.dart';
 
@@ -11,6 +13,7 @@ class CategoryController extends GetxController {
 
   final isLoading = false.obs;
   final _categoryRepository = Get.put(CategoryRepository());
+  final productRepository = Get.put(ProductRepository());
 
   RxList<CategoryModel> allCategories = <CategoryModel>[].obs;
   RxList<CategoryModel> featuredCategories = <CategoryModel>[].obs;
@@ -40,6 +43,14 @@ class CategoryController extends GetxController {
       //Remove loader
       isLoading.value = false;
     }
+  }
+
+  // Load Selected Category data
+  Future<List<ProductModel>> getCategoryProducts(
+      {required String categoryId, int limit = 4}) async {
+    final products = await productRepository.getProductsForCategory(
+        categoryId: categoryId, limit: limit);
+    return products;
   }
 
   // Upload Categories to the Cloud Firesbase

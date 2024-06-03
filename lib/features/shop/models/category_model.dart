@@ -20,6 +20,7 @@ class CategoryModel {
         name: '',
         image: '',
         isFeatured: false,
+        parentId: '',
       );
 
   static List<CategoryModel> emptyList() => [];
@@ -39,7 +40,7 @@ class CategoryModel {
       final data = document.data()!;
 
       return CategoryModel(
-        id: data['Id'] ?? '',
+        id: document.id,
         name: data['Name'] ?? '',
         image: data['Image'] ?? '',
         parentId: data['ParentId'] ?? '',

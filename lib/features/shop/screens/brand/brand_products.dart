@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:t_store/common/widgets/appbar/appbar.dart';
 import 'package:t_store/common/widgets/brands/brand_card.dart';
 import 'package:t_store/common/widgets/products/sortable/sortable_products.dart';
@@ -15,7 +16,7 @@ class BrandProducts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final brandController = BrandController.instance;
+    final brandController = Get.put(BrandController());
     return Scaffold(
       appBar: TAppBar(title: Text(brand.name)),
       body: SingleChildScrollView(
@@ -31,7 +32,7 @@ class BrandProducts extends StatelessWidget {
                 height: TSizes.spaceBtwSections,
               ),
               FutureBuilder(
-                  future: brandController.getBrandProducts(brand.id),
+                  future: brandController.getBrandProducts(brandId: brand.id),
                   builder: (context, snapshot) {
                     const loader = TVerticalProductShimmer();
                     final widget = TCloudHelperFunctions.checkMultiRecordState(
