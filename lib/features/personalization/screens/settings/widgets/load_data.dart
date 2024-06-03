@@ -5,9 +5,11 @@ import 'package:t_store/common/widgets/appbar/appbar.dart';
 import 'package:t_store/common/widgets/list_tiles/upload_data_tile.dart';
 import 'package:t_store/common/widgets/texts/section_heading.dart';
 import 'package:t_store/features/shop/controllers/banner_controller.dart';
+import 'package:t_store/features/shop/controllers/brand_category_controller.dart';
 import 'package:t_store/features/shop/controllers/brand_controller.dart';
 import 'package:t_store/features/shop/controllers/category_controller.dart';
 import 'package:t_store/features/shop/controllers/product/product_controller.dart';
+import 'package:t_store/features/shop/controllers/product_category_controller.dart';
 
 import '../../../../../utils/constants/sizes.dart';
 
@@ -20,6 +22,8 @@ class UploadData extends StatelessWidget {
     final bannersController = BannerController.instance;
     final productsController = Get.put(ProductController());
     final brandController = Get.put(BrandController());
+    final productCategoryController = Get.put(ProductCategoryController());
+    final brandCategoryController = Get.put(BrandCategoryController());
 
     return Scaffold(
       appBar: const TAppBar(
@@ -66,16 +70,18 @@ class UploadData extends StatelessWidget {
             const Text(
                 'Make sure you have already uploaded the content above.'),
             const SizedBox(height: TSizes.spaceBtwItems),
-            const TUploadDataMenuTile(
+            TUploadDataMenuTile(
               title: 'Upload Brand & Category Relation Data',
               icon: Iconsax.link_2,
               icon2: Iconsax.arrow_up_1,
+              onTap: () => brandCategoryController.uploadDummyData(),
             ),
             const SizedBox(height: TSizes.spaceBtwItems),
-            const TUploadDataMenuTile(
+            TUploadDataMenuTile(
               title: 'Upload Product Categories Relational Data',
               icon: Iconsax.link_2,
               icon2: Iconsax.arrow_up_1,
+              onTap: () => productCategoryController.uploadDummyData(),
             ),
           ],
         ),
