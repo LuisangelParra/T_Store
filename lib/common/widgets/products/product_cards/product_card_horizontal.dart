@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:t_store/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:t_store/common/widgets/images/t_rounded_image.dart';
@@ -103,6 +104,8 @@ class TProductCardHorizontal extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(top: TSizes.sm, left: TSizes.sm),
               child: Column(
+                
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -118,60 +121,62 @@ class TProductCardHorizontal extends StatelessWidget {
                     ],
                   ),
                   /// Price Row
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                /// Price
-                Flexible(
-                  child: Column(
-                    children: [
-                      if (product.productType ==
-                              ProductType.single.toString() &&
-                          product.salePrice > 0)
+            Expanded(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  /// Price
+                  Flexible(
+                    child: Column(
+                      children: [
+                        if (product.productType ==
+                                ProductType.single.toString() &&
+                            product.salePrice > 0)
+                          Padding(
+                            padding: const EdgeInsets.only(left: 0),
+                            child: Text(
+                              product.price.toString(),
+                              overflow: TextOverflow.ellipsis,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelMedium!
+                                  .apply(decoration: TextDecoration.lineThrough),
+                              textAlign: TextAlign.left,
+                            ),
+                          ),
                         Padding(
                           padding: const EdgeInsets.only(left: 0),
-                          child: Text(
-                            product.price.toString(),
-                            overflow: TextOverflow.ellipsis,
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelMedium!
-                                .apply(decoration: TextDecoration.lineThrough),
-                            textAlign: TextAlign.left,
+                          child: TProductPriceText(
+                            price: controller.getProductPrice(product),
                           ),
                         ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: TSizes.sm),
-                        child: TProductPriceText(
-                          price: controller.getProductPrice(product),
+                      ],
+                    ),
+                  ),
+              
+                  /// Add to Cart Button
+                  Container(
+                    decoration: const BoxDecoration(
+                      color: TColors.dark,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(TSizes.cardRadiusMd),
+                        bottomRight: Radius.circular(TSizes.productImageRadius),
+                      ),
+                    ),
+                    child: const SizedBox(
+                      width: TSizes.iconLg,
+                      height: TSizes.iconLg,
+                      child: Center(
+                        child: Icon(
+                          Iconsax.add,
+                          color: TColors.white,
                         ),
                       ),
-                    ],
-                  ),
-                ),
-
-                /// Add to Cart Button
-                Container(
-                  decoration: const BoxDecoration(
-                    color: TColors.dark,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(TSizes.cardRadiusMd),
-                      bottomRight: Radius.circular(TSizes.productImageRadius),
                     ),
                   ),
-                  child: const SizedBox(
-                    width: TSizes.iconLg,
-                    height: TSizes.iconLg,
-                    child: Center(
-                      child: Icon(
-                        Iconsax.add,
-                        color: TColors.white,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
                 ],
               ),
