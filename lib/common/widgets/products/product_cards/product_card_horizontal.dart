@@ -6,18 +6,25 @@ import 'package:t_store/common/widgets/products/favourite_icon/favourite_icon.da
 import 'package:t_store/common/widgets/texts/product_price_text.dart';
 import 'package:t_store/common/widgets/texts/product_title_text.dart';
 import 'package:t_store/common/widgets/texts/t_brand_title_text_with_verified_icon.dart';
-import 'package:t_store/utils/constants/image_strings.dart';
+import 'package:t_store/features/shop/controllers/product/product_controller.dart';
+import 'package:t_store/features/shop/models/product_model.dart';
 import 'package:t_store/utils/helpers/helper_functions.dart';
 
 import '../../../../utils/constants/colors.dart';
+import '../../../../utils/constants/enums.dart';
 import '../../../../utils/constants/sizes.dart';
 
 class TProductCardHorizontal extends StatelessWidget {
-  const TProductCardHorizontal({super.key});
+  const TProductCardHorizontal({super.key, required this.product});
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
+
+    final controller = ProductController.instance;
+    final salePercentage = controller.calculateSalePercentage(product.price, product.salePrice);
     return Container(
       width: 310,
       padding: const EdgeInsets.all(1),
@@ -35,16 +42,32 @@ class TProductCardHorizontal extends StatelessWidget {
             child: Stack(
               children: [
                 /// -- Thumbnail Image
-                const SizedBox(
+                SizedBox(
                   height: 120,
                   width: 120,
                   child: TRoundedImage(
-                    imageUrl: TImages.productImage1,
+                    imageUrl: product.thumbnail,
                     applyImageRadius: true,
+                    isNetworkImage: true,
                   ),
                 ),
 
                 /// -- Sale Tag
+                if(salePercentage != null)
+                  Positioned(
+                    top: 12,
+                    child: TRoundedContainer(
+                      radius: TSizes.sm,
+                      backgroundColor: TColors.secondary.withOpacity(0.8),
+                      padding: const EdgeInsets.symmetric(horizontal: TSizes.xs, vertical: TSizes.xs),
+                      child: Text(
+                        '$salePercentage%',
+                        style: Theme.of(context).textTheme.labelLarge!.apply(color: TColors.black),
+                      ),
+                    ),
+                  ),
+
+
                 Positioned(
                   top: 12,
                   child: TRoundedContainer(
@@ -63,11 +86,11 @@ class TProductCardHorizontal extends StatelessWidget {
                 ),
 
                 /// -- Favorite Icon Button
-                const Positioned(
+                Positioned(
                   top: 0,
                   right: 0,
                   child: TFavouriteIcon(
-                    productId: '',
+                    productId: product.id,
                   ),
                 ),
               ],
@@ -81,49 +104,75 @@ class TProductCardHorizontal extends StatelessWidget {
               padding: const EdgeInsets.only(top: TSizes.sm, left: TSizes.sm),
               child: Column(
                 children: [
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TProductTitleText(
-                        title: 'Green Nike Half Sleeves Shirt',
+                        title: product.title,
                         smallSize: true,
                       ),
-                      SizedBox(height: TSizes.spaceBtwItems / 2),
+                      const SizedBox(height: TSizes.spaceBtwItems / 2),
                       TBrandTitleWithVerifiedIcon(
-                        title: 'Nike',
+                        title: product.brand!.name,
                       )
                     ],
                   ),
-                  const Spacer(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  /// Price Row
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                /// Price
+                Flexible(
+                  child: Column(
                     children: [
-                      /// Pricing
-                      const Flexible(child: TProductPriceText(price: '256.0')),
-
-                      /// Add to Cart
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: TColors.dark,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(TSizes.cardRadiusMd),
-                            bottomRight:
-                                Radius.circular(TSizes.productImageRadius),
+                      if (product.productType ==
+                              ProductType.single.toString() &&
+                          product.salePrice > 0)
+                        Padding(
+                          padding: const EdgeInsets.only(left: 0),
+                          child: Text(
+                            product.price.toString(),
+                            overflow: TextOverflow.ellipsis,
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelMedium!
+                                .apply(decoration: TextDecoration.lineThrough),
+                            textAlign: TextAlign.left,
                           ),
                         ),
-                        child: const SizedBox(
-                          width: TSizes.iconLg,
-                          height: TSizes.iconLg,
-                          child: Center(
-                            child: Icon(
-                              Iconsax.add,
-                              color: TColors.white,
-                            ),
-                          ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: TSizes.sm),
+                        child: TProductPriceText(
+                          price: controller.getProductPrice(product),
                         ),
                       ),
                     ],
                   ),
+                ),
+
+                /// Add to Cart Button
+                Container(
+                  decoration: const BoxDecoration(
+                    color: TColors.dark,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(TSizes.cardRadiusMd),
+                      bottomRight: Radius.circular(TSizes.productImageRadius),
+                    ),
+                  ),
+                  child: const SizedBox(
+                    width: TSizes.iconLg,
+                    height: TSizes.iconLg,
+                    child: Center(
+                      child: Icon(
+                        Iconsax.add,
+                        color: TColors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
                 ],
               ),
             ),

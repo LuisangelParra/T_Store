@@ -17,6 +17,7 @@ class CategoryController extends GetxController {
 
   RxList<CategoryModel> allCategories = <CategoryModel>[].obs;
   RxList<CategoryModel> featuredCategories = <CategoryModel>[].obs;
+  RxList<CategoryModel> subCategories = <CategoryModel>[].obs;
 
   @override
   void onInit() {
@@ -45,12 +46,29 @@ class CategoryController extends GetxController {
     }
   }
 
+  Future<List<CategoryModel>> getSubCategories(String categoryId) async {
+    try{
+      final subCategories = await _categoryRepository.getSubCategories(categoryId);
+      this.subCategories.assignAll(subCategories);
+      return subCategories;
+    }catch(e){
+      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      return [];
+    }
+  }
+
   // Load Selected Category data
   Future<List<ProductModel>> getCategoryProducts(
       {required String categoryId, int limit = 4}) async {
-    final products = await productRepository.getProductsForCategory(
+    try{
+      final products = await productRepository.getProductsForCategory(
         categoryId: categoryId, limit: limit);
     return products;
+
+    } catch (e) {
+      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      return [];
+    }
   }
 
   // Upload Categories to the Cloud Firesbase
